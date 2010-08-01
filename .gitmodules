@@ -1,0 +1,9 @@
+[submodule "lisp/zencoding"]
+	path = lisp/zencoding
+	url = http://github.com/chrisdone/zencoding.git
+[submodule "lisp/nxhtml"]
+	path = lisp/nxhtml
+	url = http://github.com/emacsmirror/nxhtml.git
+[submodule "lisp/org-mode"]
+	path = lisp/org-mode
+	url = http://github.com/emacsmirror/org-mode.git
