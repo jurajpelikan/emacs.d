@@ -4,4 +4,5 @@ emacs_backups/
 tramp
 session.*
 \#*\#
+\.\#*
 emacs_python
