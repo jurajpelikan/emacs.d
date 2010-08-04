@@ -6,3 +6,5 @@ session.*
 \#*\#
 \.\#*
 emacs_python
+auto-save-list
+distribute-0.6.10.tar.gz

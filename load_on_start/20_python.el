@@ -32,8 +32,8 @@
 (defun my-python-mode-hook ()
   (setq major-mode 'python-mode)
   (setq indent-tabs-mode nil)
-  (guess-style-guess-all)
   (pabbrev-mode)
+  (flymake-mode)
   (setq
    outline-regexp py-outline-regexp
    outline-level 'py-outline-level) 
@@ -55,3 +55,34 @@
   (around stfu compile activate) 
   (flet ((yes-or-no-p (&rest args) t) (y-or-n-p (&rest args) t)) ad-do-it))
 
+
+(when (load "flymake" t)
+  (defun flymake-pylint-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+
+      ;; (list (concat "PATH=" (getenv "PATH") " " 
+	  ;; 			  juraj-emacs-path "emacs_python/bin/epylint " local-file))))
+
+
+      (list (concat juraj-emacs-path "scripts/python_syntax") (list local-file))))
+
+      ;; (list (concat juraj-emacs-path "scripts/python_syntax " local-file))))
+
+      ;; (list (getenv "PYMACS_PYTHON") 
+	  ;; 		(list (concat juraj-emacs-path "scripts/python_syntax " local-file)))))
+      ;; (list (list (concat "PATH=" (getenv "PATH"))) (list juraj-emacs-path "emacs_python/bin/epylint") (list local-file))))
+      ;; (list (concat "PATH=" (getenv "PATH") ";" juraj-emacs-path "emacs_python/bin/epylint"))))
+
+
+      ;; (list (concat juraj-emacs-path "emacs_python/bin/epylint") (list local-file))))
+  
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pylint-init)))
+
+(message "xxxxxxxxxxxxxxxxxx")
+(message "%s" (concat "PATH=" (getenv "PATH") " " juraj-emacs-path "emacs_python/bin/epylint"))
+(message "xxxxxxxxxxxxxxxxxx")

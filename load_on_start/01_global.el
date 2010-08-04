@@ -1,7 +1,7 @@
 ;; no splash screen, scrollbar and toolbar
 (setq inhibit-startup-message t)
-(toggle-scroll-bar nil)
-(tool-bar-mode -1)
+(scroll-bar-mode nil)
+(tool-bar-mode nil)
 
 
 ;; uniquify buffer names

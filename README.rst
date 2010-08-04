@@ -11,7 +11,7 @@ Installation
     git clone git://github.com/jurajpelikan/juraj-emacs.git
     ln -s ~/juraj-emacs ~/.emacs.d
 
-*  set up virtualenv, install dependencies and symlink stuff
+*  set up virtualenv and install dependencies
 ::
    
     cd juraj-emacs
@@ -19,6 +19,7 @@ Installation
     . emacs_python/bin/activate
     easy_install pip
     pip install -r pip_requirements.txt
-    cd lisp
-    ln -s ../emacs_python/src/pymacs/pymacs.el
 
+TODO
+----
+* http://github.com/akaihola/flymake-python
