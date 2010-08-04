@@ -1,3 +1,4 @@
+pylint
 -e git+http://github.com/pinard/Pymacs.git#egg=pymacs
 -e hg+http://bitbucket.org/agr/rope#egg=rope
 -e hg+http://bitbucket.org/agr/ropemacs#egg=ropemacs
