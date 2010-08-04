@@ -45,9 +45,7 @@
 (global-font-lock-mode 1)
 
 ;; tab width 4 and only spaces
-(setq tab-width 4)
-
-;; use only spaces when indenting code
+(setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 
 
