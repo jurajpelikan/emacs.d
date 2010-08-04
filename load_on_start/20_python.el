@@ -83,6 +83,3 @@
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pylint-init)))
 
-(message "xxxxxxxxxxxxxxxxxx")
-(message "%s" (concat "PATH=" (getenv "PATH") " " juraj-emacs-path "emacs_python/bin/epylint"))
-(message "xxxxxxxxxxxxxxxxxx")

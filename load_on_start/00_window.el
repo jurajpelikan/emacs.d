@@ -9,7 +9,7 @@
 
 
 (setq default-frame-alist '((font-backend . "xft")
-                            (font . "Bitstream Vera Sans Mono-9")
+                            (font . "Bitstream Vera Sans Mono-10")
                             ))
 
 
