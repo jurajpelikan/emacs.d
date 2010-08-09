@@ -33,7 +33,6 @@
   (setq major-mode 'python-mode)
   (setq indent-tabs-mode nil)
   (pabbrev-mode)
-  (flymake-mode)
   (setq
    outline-regexp py-outline-regexp
    outline-level 'py-outline-level) 
@@ -64,21 +63,7 @@
                         temp-file
                         (file-name-directory buffer-file-name))))
 
-      ;; (list (concat "PATH=" (getenv "PATH") " " 
-	  ;; 			  juraj-emacs-path "emacs_python/bin/epylint " local-file))))
-
-
-      (list (concat juraj-emacs-path "scripts/python_syntax") (list local-file))))
-
-      ;; (list (concat juraj-emacs-path "scripts/python_syntax " local-file))))
-
-      ;; (list (getenv "PYMACS_PYTHON") 
-	  ;; 		(list (concat juraj-emacs-path "scripts/python_syntax " local-file)))))
-      ;; (list (list (concat "PATH=" (getenv "PATH"))) (list juraj-emacs-path "emacs_python/bin/epylint") (list local-file))))
-      ;; (list (concat "PATH=" (getenv "PATH") ";" juraj-emacs-path "emacs_python/bin/epylint"))))
-
-
-      ;; (list (concat juraj-emacs-path "emacs_python/bin/epylint") (list local-file))))
+      (list (getenv "PYMACS_PYTHON") (list (concat juraj-emacs-path "scripts/python_syntax") local-file))))
   
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pylint-init)))

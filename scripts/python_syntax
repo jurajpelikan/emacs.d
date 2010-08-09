@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """
 Pylint for emacs
 """
@@ -22,14 +20,23 @@ ignore = ",".join ( [
     "W0141",
 ] )
 
-cmd = "%s --output-format parseable --include-ids y --reports n --disable=%s %s  --generated-members=objects,DoesNotExist,id,pk,_default_manager,_meta,add_closedcaption,add_inheritance,add_rendition,add_sequence,add_sibling,add_thumbnail,add_transcript,change_password,connect,create_asset,create_closedcaption,create_file,create_folder,create_rendition,create_thumbnail,create_transcript,delete_asset,delete_closedcaption,delete_file,delete_folder,delete_rendition,delete_thumbnail,delete_transcript,forgot_password,get_asset,get_assets,get_closedcaption,get_file,get_files,get_folder,get_folders,get_profile,get_rendition,get_thumbnail,get_transcript,get_users,login,move_file,move_folder,register,remove_closedcaption,remove_rendition,remove_thumbnail,remove_transcript,reset_password,search,submit_asset,submit_folder,unregister,update_asset,update_closedcaption,update_file,update_folder,update_profile,update_rendition,update_thumbnail,update_transcript,_service_list,_signals,base_fields,context" % \
-    (os.path.join(os.path.dirname(__file__), '../emacs_python/bin/pylint'),  ignore, sys.argv[1], )
+
+
+cmd = "%s --output-format parseable --include-ids y --reports n --disable=%s --generated-members=objects,DoesNotExist,id,pk,_default_manager,_meta,add_closedcaption,add_inheritance,add_rendition,add_sequence,add_sibling,add_thumbnail,add_transcript,change_password,connect,create_asset,create_closedcaption,create_file,create_folder,create_rendition,create_thumbnail,create_transcript,delete_asset,delete_closedcaption,delete_file,delete_folder,delete_rendition,delete_thumbnail,delete_transcript,forgot_password,get_asset,get_assets,get_closedcaption,get_file,get_files,get_folder,get_folders,get_profile,get_rendition,get_thumbnail,get_transcript,get_users,login,move_file,move_folder,register,remove_closedcaption,remove_rendition,remove_thumbnail,remove_transcript,reset_password,search,submit_asset,submit_folder,unregister,update_asset,update_closedcaption,update_file,update_folder,update_profile,update_rendition,update_thumbnail,update_transcript,_service_list,_signals,base_fields,context %s" % \
+    (os.path.abspath(os.path.join(os.path.dirname(__file__), '../emacs_python/bin/pylint')),  ignore, sys.argv[1])
 
 
 p = Popen ( cmd, shell = True, bufsize = -1,
             stdin = PIPE, stdout = PIPE, stderr = PIPE, close_fds = True )
 
 pylint_re = re.compile ('^([^:]+):(\d+):\s*\[([WECR])([^,]+),{0,1}\s*([^\]]+)\]\s*(.*)$')
+
+
+# _file = open('/tmp/pylint.log', 'a')
+# print >> _file, os.environ.get('PYTHONPATH')
+# for line in p.stderr:
+#     print >> _file, line
+# _file.close()
 
 for line in p.stdout:
     line = line.strip()
@@ -55,5 +62,4 @@ for line in p.stdout:
 
         print "%s %s%s %s at %s line %s." % ( msg, errtype, errnum,
                                               description, filename, linenum )
-
 

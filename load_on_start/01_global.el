@@ -53,3 +53,6 @@
 ;; (require 'guess-style)
 ;; (global-guess-style-info-mode 1)
 
+
+;; flymake mode
+(add-hook 'find-file-hook 'flymake-find-file-hook)
