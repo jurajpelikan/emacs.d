@@ -42,4 +42,5 @@
     ;; hook on after-make-frame-functions
     (add-hook 'after-make-frame-functions 'test-win-sys)
 
-
+;; fix delete key
+(normal-erase-is-backspace-mode 1)

@@ -24,3 +24,4 @@
 (load-file "~/juraj-emacs/lisp/debian-startup.el")
 (debian-run-directories "~/juraj-emacs/load_on_start")
 
+(put 'downcase-region 'disabled nil)
