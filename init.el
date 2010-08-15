@@ -25,3 +25,4 @@
 (debian-run-directories "~/juraj-emacs/load_on_start")
 
 (put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)

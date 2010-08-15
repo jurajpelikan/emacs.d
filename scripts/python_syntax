@@ -18,6 +18,7 @@ ignore = ",".join ( [
     # "E1101",  # No instance member
     "W0201", # defined outside __init__
     "W0141",
+    "R0912", # Too many branches
 ] )
 
 

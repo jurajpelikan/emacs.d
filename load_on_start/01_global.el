@@ -56,3 +56,6 @@
 
 ;; flymake mode
 (add-hook 'find-file-hook 'flymake-find-file-hook)
+
+;; no minor modes in mode line
+(setq minor-mode-alist ())
