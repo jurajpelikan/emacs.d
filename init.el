@@ -8,7 +8,7 @@
       (setq load-path (cons my-lisp-dir load-path))
       (normal-top-level-add-subdirs-to-load-path)))
 
-(setq juraj-emacs-path (concat 
+(setq emacsd-path (concat 
                         (file-name-as-directory 
                          (file-name-directory load-file-name))))
 
@@ -18,11 +18,11 @@
                           (file-name-directory load-file-name)) "emacs_python/bin/python")) 
 
 (setenv "PATH" (concat
-			   juraj-emacs-path "emacs_python/bin:" (getenv "PATH")))
+			   emacsd-path "emacs_python/bin:" (getenv "PATH")))
 
 ;; load startup files
-(load-file "~/juraj-emacs/lisp/debian-startup.el")
-(debian-run-directories "~/juraj-emacs/load_on_start")
+(load-file (concat emacsd-path "lisp/debian-startup.el"))
+(debian-run-directories (concat emacsd-path "/load_on_start"))
 
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)

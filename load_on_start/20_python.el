@@ -1,16 +1,5 @@
 (require 'python-mode)
 
-(when (load "flymake" t)
-  (defun flymake-pylint-init ()
-	(let* ((temp-file (flymake-init-create-temp-buffer-copy
-					   'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-	  (list "python_syntax" (list local-file))))
-  
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pylint-init)))
 
 ;; Python stuff for outline mode. 
 (defvar py-outline-regexp 
@@ -54,7 +43,6 @@
   (around stfu compile activate) 
   (flet ((yes-or-no-p (&rest args) t) (y-or-n-p (&rest args) t)) ad-do-it))
 
-
 (when (load "flymake" t)
   (defun flymake-pylint-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
@@ -63,7 +51,7 @@
                         temp-file
                         (file-name-directory buffer-file-name))))
 
-      (list (getenv "PYMACS_PYTHON") (list (concat juraj-emacs-path "scripts/python_syntax") local-file))))
+      (list (getenv "PYMACS_PYTHON") (list (concat emacsd-path "scripts/python_syntax") local-file))))
   
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pylint-init)))
