@@ -52,6 +52,7 @@
 	 (py-builtins-face ((t (:foreground "#fcaf3e"))) t)
 	 (py-pseudo-keyword-face ((t (:foreground "#8ae234"))) t)
 	 (font-lock-function-name-face ((t (:foreground "#edd400" :weight bold))))
+     (bm-face ((((class color) (background dark)) (:background "#666"))))
      )))
 
 (provide 'color-theme-tango)
