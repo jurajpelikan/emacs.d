@@ -4,6 +4,3 @@
 [submodule "lisp/org-mode"]
 	path = lisp/org-mode
 	url = http://github.com/emacsmirror/org-mode.git
-[submodule "lisp/js2-mode"]
-	path = lisp/js2-mode
-	url = http://github.com/johan/js2-mode.git
