@@ -13,8 +13,8 @@ ignore = ",".join ( [
     # "I0012",  # Warning locally suppressed using disable-msg
     # "W0511",  # FIXME/TODO
     "W0142",  # *args or **kwargs magic.
-    # "R0904",  # Too many public methods
-    # "R0201",  # Method could be a function
+    "R0904",  # Too many public methods
+    "R0201",  # Method could be a function
     # "E1101",  # No instance member
     "W0201", # defined outside __init__
     "W0141",
