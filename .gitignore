@@ -2,4 +2,7 @@
 .cask
 .emacs.desktop*
 .recentf
+recentf
+.smex-items
+cider-history
 projectile-bookmarks.eld
