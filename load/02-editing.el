@@ -52,6 +52,8 @@
 (setq company-minimum-prefix-length 1)
 (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 
+;; autorevert changed files
+(global-auto-revert-mode t)
 
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
