@@ -20,7 +20,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-cider-history clojure-mode-extra-font-locking shackle web-mode virtualenvwrapper use-package smex smartparens prodigy popwin pallet nyan-mode multiple-cursors magit js2-mode ido-ubiquitous idle-highlight-mode htmlize helm-projectile flycheck-cask expand-region exec-path-from-shell elpy drag-stuff cider base16-theme))))
+    (less-css-mode helm-cider-history clojure-mode-extra-font-locking shackle web-mode virtualenvwrapper use-package smex smartparens prodigy popwin pallet nyan-mode multiple-cursors magit js2-mode ido-ubiquitous idle-highlight-mode htmlize helm-projectile flycheck-cask expand-region exec-path-from-shell elpy drag-stuff cider base16-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
