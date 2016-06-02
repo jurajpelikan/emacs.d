@@ -11,7 +11,7 @@
 
 ;; When there's a cider error, show its buffer and switch to it
 (setq cider-show-error-buffer t)
-;; (setq cider-auto-select-error-buffer t)
+(setq cider-auto-select-error-buffer t)
 
 ;; Where to store the cider history.
 (setq cider-repl-history-file "~/.emacs.d/cider-history")
@@ -28,6 +28,6 @@
 (add-to-list 'auto-mode-alist '("\\.cljs.*$" . clojure-mode))
 
 
-(add-hook 'cider-mode-hook
-          (lambda ()
-            (add-hook 'after-save-hook 'cider-load-buffer nil 'make-it-local)))
+;; (add-hook 'cider-mode-hook
+;;           (lambda ()
+;;             (add-hook 'after-save-hook 'cider-load-buffer nil 'make-it-local)))
