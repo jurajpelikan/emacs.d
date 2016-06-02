@@ -8,3 +8,7 @@ cider-history
 projectile-bookmarks.eld
 
 .mc-lists.el
+
+tramp
+
+projectile.cache
