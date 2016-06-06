@@ -9,7 +9,8 @@
 (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
 (cask-initialize)
 
-(setq exec-path (append exec-path '("/usr/local/bin" "/usr/local/sbin")))
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 ;; Load config files
 (mapc 'load (directory-files "~/.emacs.d/load" t ".*\.el$"))
