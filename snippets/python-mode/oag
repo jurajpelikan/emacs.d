@@ -1,0 +1,28 @@
+# -*- mode: snippet -*-
+# name: oag
+# key: oag
+# --
+def parse_(elem):
+    """
+    Parse <> element
+
+    Element description:
+
+
+
+    Element attributes:
+
+         ()
+
+         ()
+
+
+    Child elements:
+
+
+
+
+    """
+    return {
+        "": elem.get(""),
+    }
