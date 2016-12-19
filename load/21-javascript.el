@@ -20,3 +20,7 @@
 ;; customize flycheck temp file prefix
 (setq-default flycheck-temp-prefix ".flycheck")
 (setq flycheck-javascript-eslint-executable "/usr/local/bin/eslint")
+
+;; disable js2-mode error highlighting
+(setq-default js2-mode-show-parse-errors nil
+              js2-mode-show-strict-warnings nil)
