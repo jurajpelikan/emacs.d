@@ -48,9 +48,23 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
-(add-hook 'after-init-hook 'global-company-mode)
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
+
 (setq company-minimum-prefix-length 1)
+(setq company-dabbrev-downcase nil)
+
 (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-backends
+      '((company-files          ; files & directory
+         company-keywords       ; keywords
+         company-capf
+         company-yasnippet
+         )
+        (company-abbrev company-dabbrev)
+        ))
+(add-hook 'after-init-hook 'global-company-mode)
+(yas-global-mode 1)
 
 ;; autorevert changed files
 (global-auto-revert-mode t)
@@ -66,3 +80,4 @@
 
 ;; turn on flychecking globally
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(setq tramp-default-method "ssh")
