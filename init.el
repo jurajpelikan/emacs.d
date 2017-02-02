@@ -7,8 +7,8 @@
 ;; You may delete these explanatory comments.
 ;; (package-initialize)
 
-
-(require 'cask "/usr/local/Cellar/cask/0.7.4/cask.el")
+(require 'cask' "~/.emacs.d/.cask/25.1/elpa/cask-20161024.1205/cask.el")
+;; (require 'cask "/usr/local/Cellar/cask/0.7.4/cask.el")
 (cask-initialize)
 
 (require 'pallet)
@@ -32,14 +32,16 @@
     ("~/org/kiwi/postman.org" "~/org/other.org" "~/org/kiwi/call.org" "~/org/kiwi/pathfinder.org")))
  '(package-selected-packages
    (quote
-    (helm-flyspell flyspell-correct-helm yaml-mode dockerfile-mode yafolding python-docstring json-mode flymake-json lua-mode company-anaconda anaconda-mode yasnippet python-mode less-css-mode helm-cider-history clojure-mode-extra-font-locking shackle web-mode virtualenvwrapper use-package smex smartparens prodigy popwin pallet nyan-mode multiple-cursors magit js2-mode ido-ubiquitous idle-highlight-mode htmlize helm-projectile flycheck-cask expand-region exec-path-from-shell drag-stuff cider base16-theme)))
+    (avy guru-mode synonyms ac-anaconda helm-flyspell flyspell-correct-helm yaml-mode dockerfile-mode yafolding python-docstring json-mode flymake-json lua-mode company-anaconda anaconda-mode yasnippet python-mode less-css-mode helm-cider-history clojure-mode-extra-font-locking shackle web-mode virtualenvwrapper use-package smex smartparens prodigy popwin pallet nyan-mode multiple-cursors magit js2-mode ido-ubiquitous idle-highlight-mode htmlize helm-projectile flycheck-cask expand-region exec-path-from-shell drag-stuff cider base16-theme)))
  '(safe-local-variable-values
    (quote
-    ((python-shell-extra-pythonpaths "/Users/juraj/Code/kiwi/pathfinder/")
-     (python-shell-extra-pythonpaths "" "~/Code/kiwi/pathfinder/")
-     (python-shell-extra-pythonpaths . "~/Code/kiwi/pathfinder/")
-     (python-shell-extra-pythonpaths "~/Code/kiwi/pathfinder")
-     (python-shell-extra-pythonpaths "~/Code/kiwi/pathfinder/")
+    ((projectile-globally-ignored-files quote
+                                        ("/Users/juraj/Code/kiwi/pathfinder/data/*"))
+     (projectile-globally-ignored-files quote
+                                        ("/Users/juraj/Code/kiwi/pathfinder/data"))
+     (projectile-globally-ignored-files quote
+                                        ("data/*"))
+     (python-shell-extra-pythonpaths "/Users/juraj/Code/kiwi/pathfinder/")
      (python-shell-virtualenv-root . "~/Envs/pathfinder/")
      (python-shell-extra-pythonpaths "~/Code/kiwi/kw-postman/")
      (python-shell-virtualenv-root . "~/Envs/kw-postman")

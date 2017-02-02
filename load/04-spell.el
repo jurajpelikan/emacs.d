@@ -61,7 +61,7 @@
     (ispell-kill-ispell t)
     ))
 
-(define-key flyspell-mode-map (kbd "C-'") 'helm-flyspell-correct)
+;; (define-key flyspell-mode-map (kbd "C-'") 'helm-flyspell-correct)
 
 (defun text-mode-hook-setup ()
   ;; Turn off RUN-TOGETHER option when spell check text-mode

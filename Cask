@@ -2,6 +2,7 @@
 (source melpa)
 
 (depends-on "anaconda-mode")
+(depends-on "avy")
 (depends-on "base16-theme")
 (depends-on "bind-key")
 (depends-on "cask")
@@ -19,6 +20,7 @@
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
 (depends-on "flymake-json")
+(depends-on "guru-mode")
 (depends-on "helm")
 (depends-on "helm-core")
 (depends-on "helm-flyspell")
@@ -43,6 +45,7 @@
 (depends-on "shackle")
 (depends-on "smartparens")
 (depends-on "smex")
+(depends-on "synonyms")
 (depends-on "use-package")
 (depends-on "virtualenvwrapper")
 (depends-on "web-mode")

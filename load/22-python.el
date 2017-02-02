@@ -16,6 +16,7 @@
   :config (add-hook 'flycheck-mode-hook #'flycheck-virtualenv-setup))
 
 
+;; (add-hook 'python-mode-hook (lambda () 'anaconda-mode 'flyspell-prog-mode))
 (add-hook 'python-mode-hook 'anaconda-mode)
 
 
