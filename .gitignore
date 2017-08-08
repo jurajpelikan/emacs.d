@@ -13,3 +13,6 @@ tramp
 
 projectile.cache
 /ido.last
+.DS_Store
+custom.el
+network-security.data

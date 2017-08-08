@@ -1,0 +1,12 @@
+(source gnu)
+(source melpa)
+
+(depends-on "avy")
+(depends-on "beacon-mode")
+(depends-on "counsel-projectile")
+(depends-on "exec-path-from-shell")
+(depends-on "ivy")
+(depends-on "pallet")
+(depends-on "smart-mode-line")
+(depends-on "use-package")
+(depends-on "which-key")
