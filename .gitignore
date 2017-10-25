@@ -16,3 +16,4 @@ projectile.cache
 .DS_Store
 custom.el
 network-security.data
+/anaconda-mode

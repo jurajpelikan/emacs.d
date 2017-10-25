@@ -1,8 +1,6 @@
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;;; init.el --- orion emacs init
 ;; (package-initialize)
+;; Code
 
 (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
 (cask-initialize)
@@ -21,7 +19,11 @@
 (use-package orion-ui)
 (use-package orion-editor)
 (use-package orion-completion)
+(use-package orion-navigation)
+(use-package orion-python)
+(use-package orion-prog)
+(use-package orion-editing)
+(use-package orion-eshell)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
-

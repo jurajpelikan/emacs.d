@@ -1,5 +1,13 @@
 ;;; Code:
 
+(use-package desktop
+  :config
+  (setq desktop-save t
+	desktop-path (list orion-save-dir)
+	desktop-dirname orion-save-dir)
+  :init
+  (desktop-save-mode t))
+
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
 
@@ -46,16 +54,16 @@
   (add-hook 'after-init-hook #'sml/setup))
 
 
-(use-package beacon
-  :init
-  (beacon-mode +1))
+;; (use-package beacon
+;;   :init
+;;   (beacon-mode +1))
 
 (use-package which-key
   :init
   (which-key-mode +1))
 
 (menu-bar-mode +1)
-(toggle-scroll-bar -1)
+(scroll-bar-mode -1)
 
 ;; Enable emoji, and stop the UI from freezing when trying to display them.
 (if (fboundp 'set-fontset-font)
@@ -68,7 +76,6 @@
  :background (face-background 'default))
 
 (global-linum-mode)
-
 
 (provide 'orion-ui)
 ;;; orion-ui.el ends here
