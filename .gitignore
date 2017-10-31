@@ -1,4 +1,5 @@
 *~
+/elpa
 .cask
 .emacs.desktop*
 .recentf
@@ -17,3 +18,6 @@ projectile.cache
 custom.el
 network-security.data
 /anaconda-mode
+/.nrepl*
+/eshell
+smex-items

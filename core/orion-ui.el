@@ -1,12 +1,5 @@
 ;;; Code:
 
-(use-package desktop
-  :config
-  (setq desktop-save t
-	desktop-path (list orion-save-dir)
-	desktop-dirname orion-save-dir)
-  :init
-  (desktop-save-mode t))
 
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
@@ -44,23 +37,21 @@
 (add-to-list 'default-frame-alist
 	     `(font . ,orion-font))
 
-(when orion-theme
-  (load-theme orion-theme t))
-
-(use-package smart-mode-line
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
   :init
-  (setq sml/no-confirm-load-theme t)
-  (setq sml/theme nil)
-  (add-hook 'after-init-hook #'sml/setup))
+  (color-theme-sanityinc-tomorrow-eighties))
+
+;; (when orion-theme
+;;   (load-theme orion-theme t))
 
 
-;; (use-package beacon
+;; (use-package smart-mode-line
+;;   :ensure t
 ;;   :init
-;;   (beacon-mode +1))
-
-(use-package which-key
-  :init
-  (which-key-mode +1))
+;;   (progn
+;;     (setq sml/no-confirm-load-theme t)
+;;     (sml/setup)))
 
 (menu-bar-mode +1)
 (scroll-bar-mode -1)
@@ -69,13 +60,15 @@
 (if (fboundp 'set-fontset-font)
     (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend))
 
-(set-face-attribute
- 'fringe
- nil
- :foreground (face-foreground 'default)
- :background (face-background 'default))
+(defun setup-fringe ()
+  (set-face-attribute
+   'fringe
+   nil
+   :foreground (face-foreground 'default)
+   :background (face-background 'default)))
 
-(global-linum-mode)
+
+(add-hook 'focus-in-hook #'setup-fringe)
 
 (provide 'orion-ui)
 ;;; orion-ui.el ends here
