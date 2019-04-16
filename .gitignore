@@ -21,3 +21,5 @@ network-security.data
 /.nrepl*
 /eshell
 smex-items
+straight
+/cache-dir

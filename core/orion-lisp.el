@@ -2,11 +2,11 @@
 
 
 (use-package slime
-  :ensure t
+  :straight t
   :config
-  (setq inferior-lisp-program "/usr/local/bin/clisp"
-	slime-contribs '(slime-fancy)))
-
+  (progn
+    (setq inferior-lisp-program "/usr/bin/sbcl")
+    (slime-setup)))
 
 (provide 'orion-lisp)
 ;;; orion-python.el ends here

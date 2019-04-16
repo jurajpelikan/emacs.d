@@ -1,7 +1,7 @@
 ;;; Code:
 
 (use-package telephone-line
-  :ensure t
+  :straight t
 
   :init
   (defun recreate-message-buffer ()
@@ -58,8 +58,6 @@
   (telephone-line-mode 1)
 
   )
-
-
 
 (provide 'orion-modeline)
 ;;; orion-modeline.el ends here

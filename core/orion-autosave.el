@@ -1,36 +1,39 @@
 ;; Code
 
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
+(use-package super-save
+  :straight t
+  :config
+  (super-save-mode +1))
+
+
+(setq backup-directory-alist `((".*" . ,orion-save-dir))
+      auto-save-file-name-transforms `((".*" ,orion-save-dir t))
+      undo-tree-auto-save-history t
+      recentf-save-file (expand-file-name "recentf" orion-save-dir)
+      
+      )
+
+
 (setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+      `((".*" ,orion-save-dir t)))
 
 
-(defun orion-auto-save-command ()
-  "Save the current buffer"
-  (when (and buffer-file-name
-	     (buffer-modified-p (current-buffer))
-	     (file-writable-p buffer-file-name))
-    (save-buffer)))
+(setq undo-tree-history-directory-alist
+      `((".*" . ,orion-save-dir)))
 
-(defmacro advise-commands (advice-name commands class &rest body)
-  "Apply advice named ADVICE-NAME to multiple COMMANDS.
-The body of the advice is in BODY."
-  `(progn
-     ,@(mapcar (lambda (command)
-		 `(defadvice ,command (,class ,(intern (concat (symbol-name command) "-" advice-name)) activate)
-		    ,@body))
-	       commands)))
 
-;; advise all window switching functions
-(advise-commands
- "auto-save"
- (switch-to-buffer other-window windmove-up windmove-down windmove-left windmove-right)
- before
- (orion-auto-save-command))
+(setq undo-tree-auto-save-history t)
 
-(add-hook 'mouse-leave-buffer-hook 'orion-auto-save-command)
-(add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; (use-package desktop
+;;   :straight t
+;;   :defer 1
+;;   :config
+;;   (setq desktop-save t
+;; 	desktop-path (list orion-save-dir)
+;; 	desktop-dirname orion-save-dir)
+;;   :init
+;;   (desktop-save-mode t))
 
 
 (provide 'orion-autosave)

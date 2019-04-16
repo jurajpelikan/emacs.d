@@ -1,11 +1,18 @@
 ;;; Code:
 
 (use-package hydra
-  :ensure t
+  :straight t
   :config
-  (unbind-key "C-z")
-  (unbind-key "C-/" undo-tree-map)
-  (unbind-key "C-?" undo-tree-map))
+  (general-unbind 'undo-tree-map
+    "C-/"
+    "C-z"
+    "C-?"))
+
+
+(defhydra orion-hydra/org-mode (:columns 3)
+  "Undo tree hydra"
+  ("a" org-agenda-list "Agenda")
+  ("q" nil "exit" :exit t))
 
 
 (defhydra orion-hydra/undo-tree (:columns 3)
@@ -54,6 +61,7 @@
 (defhydra orion-hydra/shortcut (:columns 3)
   "Shortcut hydra"
   ("/" projectile-find-file "Find file in project" :exit t)
+  ("," counsel-mark-ring "Mark ring" :exit t)
   ("." dired-jump "Dired here" :exit t)
   (";" counsel-imenu "Imenu" :exit t)
   ("'" counsel-rg "Grep" :exit t)
@@ -61,6 +69,8 @@
   ;; ("c"  "Org caprture" :exit t)
   ("t" orion-org-mode/goto-project-notes "Goto project tasks")
   ("c" org-projectile-capture-for-current-project "Capture task" :exit t)
+  ("l" org-store-link "Org store link" :exit t)
+  ("s" orion-hydra/smartparens/body "smartparens" :exit t)
   ("q" nil "exit" :exit t))
 
 
@@ -95,12 +105,13 @@
 
 (defhydra orion-hydra/root (:columns 3)
   "Root hydra to explore all others"
+  ("o" orion-hydra/org-mode/body "org-mode" :exit t)
   ("u" orion-hydra/undo-tree/body "undo-tree" :exit t)
   ("d" orion-hydra/dired/body "dired" :exit t)
   ("b" orion-hydra/ibuffer/body "ibuffer" :exit t)
   ("p" orion-hydra/projectile/body "projectile" :exit t)
-  ("sm" orion-hydra/smerge/body "smerge" :exit t)
-  ("a" orion-hydra/smartparens/body "smartparens" :exit t)
+  ("m" orion-hydra/smerge/body "smerge" :exit t)
+  ("s" orion-hydra/smartparens/body "smartparens" :exit t)
   ("/" orion-hydra/shortcut/body "shortcuts" :exit t)
   ("q" nil "exit" :exit t))
 
@@ -108,6 +119,12 @@
 (global-set-key (kbd "C-/") 'orion-hydra/shortcut/body)
 (global-set-key (kbd "C-z") 'orion-hydra/shortcut/body)
 (global-set-key (kbd "C->") 'orion-hydra/smartparens/body)
+
+(general-define-key
+ "C-/" 'orion-hydra/shortcut/body
+ "C-/" 'orion-hydra/shortcut/body
+ "C-z" 'orion-hydra/shortcut/body
+ "C->" 'orion-hydra/smartparens/body)
 
 (provide 'orion-hydra)
 ;;; orion-hydra.el ends here

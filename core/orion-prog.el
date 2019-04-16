@@ -2,13 +2,13 @@
 
 
 ;; (use-package ggtags
-;;   :ensure t
+;;   :straight t
 ;;   :diminish ggtags-mode
 ;;   :init (add-hook 'prog-mode-hook (lambda () (ggtags-mode 1))))
 
 
 (use-package counsel-gtags
-  :ensure t
+  :straight t
   :diminish counsel-gtags-mode
   :bind ("C-t d" . counsel-gtags-find-definition)
   :init (add-hook 'prog-mode-hook (lambda () (counsel-gtags-mode 1))))
@@ -20,13 +20,13 @@
 
 
 (use-package flycheck
-  :ensure t
+  :straight t
   :diminish flycheck-mode
   :init (global-flycheck-mode))
 
 
 ;; (use-package rainbow-delimiters
-;;   :ensure t
+;;   :straight t
 ;;   :defer t
 ;;   :init
 ;;   (progn
@@ -34,7 +34,7 @@
 
 
 (use-package smartparens-config
-  :ensure smartparens
+  :straight smartparens
   :diminish smartparens-mode
   :init
   (setq sp-base-key-bindings 'paredit
@@ -48,14 +48,14 @@
 (which-func-mode 1)
 
 (use-package yasnippet
-  :ensure t
+  :straight t
   :diminish yas-minor-mode
   :config
   (yas-global-mode 1))
 
 
 (use-package magit
-  :ensure t
+  :straight t
   :bind ("C-x g" . magit-status))
 
 

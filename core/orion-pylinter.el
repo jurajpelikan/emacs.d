@@ -7,7 +7,7 @@
   :safe #'stringp)
 
 (flycheck-define-checker orion-pylinter
-  "Pylinter flucheck checker"
+  "Pylinter flycheck checker"
   :command ("pylinter"
 	    (config-file "--config" orion-pylinter-config)
 	    source-original)

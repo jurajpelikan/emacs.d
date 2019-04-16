@@ -2,22 +2,22 @@
 (require 'flycheck)
 
 (use-package company-anaconda
-  :ensure t)
+  :straight t)
 
 
 (use-package anaconda-mode
-  :ensure t
+  :straight t
   :bind (("M-." . anaconda-mode-find-definitions))
   :diminish anaconda-mode eldoc-mode)
 
 
 (use-package sphinx-doc
-  :ensure t
+  :straight t
   :diminish sphinx-doc-mode)
 
 
 ;; (use-package pytest
-;;   :ensure t
+;;   :straight t
 ;;   :bind (:map python-mode-map
 ;;	      (("C-c ." . 'pytest-pdb-one))))
 
@@ -25,19 +25,19 @@
 (use-package orion-jungle)
 
 
-(defun orion-python-mode-hook ()
-  "Configure company backaneds"
-  (add-hook
-   'hack-local-variables-hook
-   (lambda ()
-     (sphinx-doc-mode t)
-     (set (make-local-variable 'company-backends)
-	  '(
-	    (
-	     company-jungle/backend
-	     ;; company-anaconda
-	     company-files)
-	    )))))
+;; (defun orion-python-mode-hook ()
+;;   "Configure company backaneds"
+;;   (add-hook
+;;    'hack-local-variables-hook
+;;    (lambda ()
+;;      (sphinx-doc-mode t)
+;;      (set (make-local-variable 'company-backends)
+;;	  '(
+;;	    (
+;;	     company-jungle/backend
+;;	     ;; company-anaconda
+;;	     company-files)
+;;	    )))))
 
 (use-package python
   :config
@@ -48,7 +48,12 @@
 	      (("C-c C-r" . nil)))
   :init
   (unbind-key "C-c C-p" python-mode-map)
-  (add-hook 'python-mode-hook 'orion-python-mode-hook)
+  ;; (add-hook 'python-mode-hook 'orion-python-mode-hook)
+  ;; (add-hook 'python-mode-hook
+  ;; 	    (lambda ()
+  ;; 	      (set (make-local-variable 'company-backends) '(company-lsp
+  ;; 							     ;; company-jungle/backend
+  ;; 							     company-files))))
   ;; (add-hook 'python-mode-hook 'anaconda-mode)
   ;; (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
   )

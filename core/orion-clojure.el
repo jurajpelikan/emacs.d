@@ -1,28 +1,39 @@
 ;;; Code:
 
-
-
 (use-package clojure-mode
-  :ensure t)
+  :straight t)
 
 (use-package cider
-  :ensure t)
+  :straight t
+  :config
+  (defun orion-clojure-namespace-refresh ()
+    (interactive)
+    (cider-interactive-eval
+     "(require 'clojure.tools.namespace.repl)
+      (clojure.tools.namespace.repl/refresh)"))
+  :general
+  ("M-r" 'orion-clojure-namespace-refresh)
+  )
 
-(define-clojure-indent
-  (defroutes 'defun)
-  (GET 2)
-  (POST 2)
-  (PUT 2)
-  (DELETE 2)
-  (HEAD 2)
-  (ANY 2)
-  (OPTIONS 2)
-  (PATCH 2)
-  (rfn 2)
-  (let-routes 1)
-  (context 2))
 
-;; (require 'prelude-lisp)
+
+  (define-key clojure-mode-map (kbd "M-r") 'cider-namespace-refresh)
+
+;; (define-clojure-indent
+;;   (defroutes 'defun)
+;;   (GET 2)
+;;   (POST 2)
+;;   (PUT 2)
+;;   (DELETE 2)
+;;   (HEAD 2)
+;;   (ANY 2)
+;;   (OPTIONS 2)
+;;   (PATCH 2)
+;;   (rfn 2)
+;;   (let-routes 1)
+;;   (context 2))
+
+;; ;; (require 'prelude-lisp)
 ;; (prelude-require-packages '(clojure-mode cider))
 
 ;; (eval-after-load 'clojure-mode

@@ -38,7 +38,7 @@
 	     `(font . ,orion-font))
 
 (use-package color-theme-sanityinc-tomorrow
-  :ensure t
+  :straight t
   :init
   (color-theme-sanityinc-tomorrow-eighties))
 
@@ -47,7 +47,7 @@
 
 
 ;; (use-package smart-mode-line
-;;   :ensure t
+;;   :straight t
 ;;   :init
 ;;   (progn
 ;;     (setq sml/no-confirm-load-theme t)

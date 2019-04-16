@@ -1,7 +1,7 @@
 ;; Code
 
 (use-package eshell
-  :ensure t
+  :straight t
   :init
   (setq eshell-where-to-jump 'begin)
   (setq eshell-review-quick-commands nil)
