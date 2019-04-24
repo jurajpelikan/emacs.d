@@ -39,7 +39,7 @@
 
 (use-package color-theme-sanityinc-tomorrow
   :straight t
-  :init
+  :config
   (color-theme-sanityinc-tomorrow-eighties))
 
 ;; (when orion-theme
@@ -60,15 +60,24 @@
 (if (fboundp 'set-fontset-font)
     (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend))
 
-(defun setup-fringe ()
-  (set-face-attribute
-   'fringe
-   nil
-   :foreground (face-foreground 'default)
-   :background (face-background 'default)))
+(defvar orion-ui/initialized nil)
+
+(defun orion-ui/ui-initialize ()
+  "Setup orion ui.
+
+FRAME argument is required for after-make-frame hook."
+  (if (not orion-ui/initialized)
+      (progn
+	(message "ui init")
+	(set-face-attribute
+	 'fringe
+	 nil
+	 :foreground (face-foreground 'default)
+	 :background (face-background 'default))
+	(setq orion-ui/initialized t))))
 
 
-(add-hook 'focus-in-hook #'setup-fringe)
+(add-hook 'focus-in-hook #'orion-ui/ui-initialize)
 
 (provide 'orion-ui)
 ;;; orion-ui.el ends here

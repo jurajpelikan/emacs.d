@@ -15,13 +15,14 @@
       ns-use-proxy-icon nil
       )
 
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (use-package general
   :straight t)
 
 
 (use-package diminish
-    :straight t)
+  :straight t)
 
 
 (use-package powerthesaurus
@@ -41,7 +42,7 @@
 (use-package projectile
   :straight t
   :diminish projectile-mode
-  :config
+  :init
   (setq projectile-enable-caching nil
 	projectile-cache-file (expand-file-name
 			       "projectile.cache"
@@ -49,8 +50,7 @@
 	projectile-known-projects-file (expand-file-name
 					"projectile-bookmarks.eld"
 					orion-save-dir))
-  :init
-  (projectile-mode))
+  (projectile-mode 1))
 
 
 (use-package undo-tree
@@ -107,6 +107,12 @@
   :config
   (move-text-default-bindings))
 
+
+;; Provide a new MAJORMODE-local-vars-hook
+ (add-hook 'hack-local-variables-hook 'run-local-vars-mode-hook)
+ (defun run-local-vars-mode-hook ()
+   "Run a hook for the major-mode after the local variables have been processed."
+   (run-hooks (intern (concat (symbol-name major-mode) "-local-vars-hook"))))
 
 ;; (diminish 'auto-revert-mode)
 

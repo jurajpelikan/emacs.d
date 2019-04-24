@@ -30,10 +30,9 @@
 
 (defun orion-python/lsp-initialization-options ()
   "Read custom init options from project config file."
-  (message (lsp-workspace-root))
   (json-read-file  (concat
 		    (file-name-as-directory (lsp-workspace-root))
-		    "etc/lsp-config.json")))
+		    "etc/lsp/config")))
 
 
 (defun orion-python/lsp-start-callback (workspace _params)
@@ -113,7 +112,7 @@ Return project root from .project file."
 
 ;; (unbind-key "C-c C-p" python-mode-map)
 
- 
+
 ;; (use-package lsp-mode
 ;;   :straight t
 ;;   :commands lsp

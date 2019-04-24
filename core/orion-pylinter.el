@@ -1,6 +1,16 @@
+;;; Package --- Pylinter flycheck configuration
+;;; Commentary:
 ;;; Code:
 
+
 (require 'flycheck)
+
+(defun orion-pylinter/locate-config ()
+  "Return path to pylinter config.
+This method doesnt check if it exists."
+  (concat
+   (file-name-as-directory (projectile-project-root))
+   "etc/pylinter/config"))
 
 
 (flycheck-def-config-file-var orion-pylinter-config orion-pylinter ""
@@ -15,6 +25,9 @@
   ((error line-start (file-name) ":" line ":" column ":" (message) line-end))
   :modes python-mode)
 
+
+(add-hook 'python-mode-local-vars-hook
+           (lambda () (setq-local orion-pylinter-config (orion-pylinter/locate-config))))
 
 (add-to-list 'flycheck-checkers 'orion-pylinter t)
 

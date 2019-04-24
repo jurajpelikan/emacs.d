@@ -59,5 +59,8 @@
   :bind ("C-x g" . magit-status))
 
 
+(use-package graphql-mode
+  :straight t)
+
 (provide 'orion-prog)
 ;;; orion-prog.el ends here
