@@ -39,10 +39,11 @@
 (use-package orion-hydra)
 (use-package orion-navigation)
 (use-package orion-prog)
+(use-package orion-k8s)
 
 ;; (use-package orion-python)
 (use-package orion-python-lsp)
-
+;; (use-package orion-python-elpy)
 (use-package orion-lisp)
 (use-package orion-clojure)
 (use-package orion-org-mode)
@@ -53,3 +54,5 @@
 ;; (use-package orion-mail)
 
 ;;; init.el ends here
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)

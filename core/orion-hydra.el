@@ -47,8 +47,8 @@
 (defhydra orion-hydra/projectile (:columns 3)
   "Projectile hydra"
   ("g" counsel-rg "Grep" :exit t)
-  ("f" projectile-find-file "Find file" :exit t)
-  ("o-f" projectile-find-file-other-window "Find file other window" :exit t)
+  ("f" counsel-projectile-find-file "Find file" :exit t)
+  ("o-f" counsel-projectile-find-file-other-window "Find file other window" :exit t)
   ("K" projectile-kill-buffers "Kill buffers" :exit t)
   ("o" projectile-multi-occur "Occur" :exit t)
   ("p" projectile-switch-project "Switch project" :exit t)
@@ -60,7 +60,7 @@
 
 (defhydra orion-hydra/shortcut (:columns 3)
   "Shortcut hydra"
-  ("/" projectile-find-file "Find file in project" :exit t)
+  ("/" counsel-projectile-find-file "Find file in project" :exit t)
   ("," counsel-mark-ring "Mark ring" :exit t)
   ("." dired-jump "Dired here" :exit t)
   (";" counsel-imenu "Imenu" :exit t)

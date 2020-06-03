@@ -4,19 +4,45 @@
 
 (require 'use-package)
 
-
 (use-package lsp-mode
-  :straight t
+  :straight (:host github :repo "emacs-lsp/lsp-mode")
+  :hook (python-mode . (lambda ()
+                         (setq-local lsp-pyls-server-command (orion-python/find-pyls))
+			 (setq-local lsp-pyls-plugins-pylint-enabled nil)
+                         (lsp)))
   :config
   ;; (setq lsp-auto-guess-root t)
+  (setq
+   lsp-auto-guess-root t
+   lsp-pyls-plugins-jedi-completion-include-params nil
+   lsp-pyls-plugins-mccabe-enabled nil
+   lsp-pyls-plugins-pylint-enabled nil
+   lsp-pyls-plugins-pycodestyle-enabled nil
+   lsp-pyls-plugins-pyflakes-enabled nil
+   lsp-pyls-plugins-yapf-enabled nil
+   lsp-eldoc-render-all nil
+   lsp-signature-render-documentation nil
+   lsp-signature-auto-activate t
+   lsp-diagnostic-package :none
+   lsp-pyls-plugins-rope-completion-enabled nil)
   :init
-  (setq lsp-auto-guess-root t)
-  ;; (advice-add 'lsp--calculate-root :override )
-  (defun lsp--calculate-root (session file-name)
+  (setq-default
+   lsp-auto-guess-root t
+   lsp-pyls-plugins-jedi-completion-include-params nil
+   lsp-pyls-plugins-mccabe-enabled nil
+   lsp-pyls-plugins-pylint-enabled nil
+   lsp-pyls-plugins-pycodestyle-enabled nil
+   lsp-pyls-plugins-pyflakes-enabled nil
+   lsp-pyls-plugins-yapf-enabled nil
+   lsp-signature-render-documentation nil
+   lsp-signature-auto-activate t
+   lsp-eldoc-render-all nil
+   lsp-diagnostic-package :none
+   lsp-pyls-plugins-rope-completion-enabled nil)
+  (defun orion-python/lsp--calculate-root (session file-name)
     "Calculate project root for FILE-NAME in SESSION."
     (lsp--suggest-project-root))
-  (add-hook 'python-mode-hook #'lsp))
-
+  (advice-add 'lsp--calculate-root :override #'orion-python/lsp--calculate-root))
 
 (use-package company-lsp
   :straight t
@@ -34,6 +60,16 @@
 		    (file-name-as-directory (lsp-workspace-root))
 		    "etc/lsp/config")))
 
+(defun orion-python/lsp-python-env-bin ()
+  "Read interpreter path from lsp config file."
+  (file-name-directory (directory-file-name (cdr
+   (assoc 'InterpreterPath
+	  (assoc 'properties
+		 (assoc 'interpreter (orion-python/lsp-initialization-options))))))))
+
+(defun orion-python/find-pyls ()
+  "Find pyls executable based on lsp config file."
+  (concat (orion-python/lsp-python-env-bin) "pyls"))
 
 (defun orion-python/lsp-start-callback (workspace _params)
   "Python lsp start callback.
@@ -42,7 +78,6 @@ WORKSPACE is just used for logging and _PARAMS is unused."
   (lsp-workspace-status "::Started" workspace)
   (message "Python language server started whoo hoo"))
 
-lsp-auto-guess-root
 
 (defvar orion-python/lsp-notification-handlers
   (lsp-ht ("python/languageServerStarted" 'orion-python/lsp-start-callback)
@@ -84,14 +119,26 @@ Return project root from .project file."
 		'(python-pycompile
 		  python-pylint
 		  python-flake8))
-  (lsp-register-client
-   (make-lsp-client
-    :new-connection (lsp-stdio-connection "ls-python")
-    :major-modes '(python-mode)
-    :server-id 'mspyls
-    :priority 1
-    :initialization-options 'orion-python/lsp-initialization-options
-    :notification-handlers orion-python/lsp-notification-handlers)))
+  ;; (lsp-register-client
+  ;;  (make-lsp-client
+  ;;   :new-connection (lsp-stdio-connection "ls-python")
+  ;;   :major-modes '(python-mode)
+  ;;   :server-id 'mspyls
+  ;;   :priority 1
+  ;;   :initialization-options 'orion-python/lsp-initialization-options
+  ;;   :notification-handlers orion-python/lsp-notification-handlers))
+  ;; (lsp-register-client
+  ;;  (make-lsp-client
+  ;;   :new-connection (lsp-stdio-connection "/Users/juraj/Envs/fetcher/bin/pyls")
+  ;;   :major-modes '(python-mode)
+  ;;   :server-id 'pyls
+  ;;   :priority 1
+  ;;   :initialization-options 'orion-python/lsp-initialization-options
+  ;;   ;; :notification-handlers orion-python/lsp-notification-handlers)
+  ;;  )
+
+  )
+
 
 
 ;; (use-package lsp-python-ms
@@ -201,7 +248,6 @@ Return project root from .project file."
 ;; ;;				 ("python/reportProgress" 'ignore)
 ;; ;;				 ("python/beginProgress" 'ignore)
 ;; ;;				 ("python/endProgress" 'ignore)))
-
 
 
 

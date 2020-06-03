@@ -18,7 +18,7 @@ This method doesnt check if it exists."
 
 (flycheck-define-checker orion-pylinter
   "Pylinter flycheck checker"
-  :command ("pylinter"
+  :command ("~/bin/pylinter"
 	    (config-file "--config" orion-pylinter-config)
 	    source-original)
   :error-patterns

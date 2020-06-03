@@ -13,6 +13,7 @@
       find-program "/usr/bin/find"
       dired-use-ls-dired nil
       ns-use-proxy-icon nil
+      indent-tabs-mode nil
       )
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -38,6 +39,10 @@
   :init
   (exec-path-from-shell-initialize))
 
+(use-package occur-x
+  :straight t
+  :init
+  (add-hook 'occur-mode-hook 'turn-on-occur-x-mode))
 
 (use-package projectile
   :straight t

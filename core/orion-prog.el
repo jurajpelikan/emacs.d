@@ -22,7 +22,8 @@
 (use-package flycheck
   :straight t
   :diminish flycheck-mode
-  :init (global-flycheck-mode))
+
+  )
 
 
 ;; (use-package rainbow-delimiters
@@ -61,6 +62,14 @@
 
 (use-package graphql-mode
   :straight t)
+
+
+(use-package yaml-mode
+  :straight t)
+
+(use-package dockerfile-mode
+  :straight t)
+
 
 (provide 'orion-prog)
 ;;; orion-prog.el ends here

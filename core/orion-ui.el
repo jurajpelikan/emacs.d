@@ -38,11 +38,17 @@
 	     `(font . ,orion-font))
 
 (use-package color-theme-sanityinc-tomorrow
+  ;; :straight (:host github :repo "purcell/color-theme-sanityinc-tomorrow")
   :straight t
   :config
   (color-theme-sanityinc-tomorrow-eighties))
 
-;; (when orion-theme
+;; (use-package dimmer
+;;   :straight t
+;;   :config
+;;   (dimmer-mode))
+
+;; ;; (when orion-theme
 ;;   (load-theme orion-theme t))
 
 
